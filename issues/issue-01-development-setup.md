@@ -51,9 +51,9 @@ Git リポジトリ初期化、Docker-Compose（dev & prod）、VS Code 推奨�
 ## タスク
 
 ### Git & プロジェクト初期化
-- [ ] .gitignore の適切な設定
-- [ ] README.md の作成
-- [ ] ブランチ保護設定
+- [x] .gitignore の適切な設定
+- [x] README.md の作成
+- [x] ブランチ保護設定
 
 ### Docker環境構築
 - [ ] docker-compose.dev.yml の作成
