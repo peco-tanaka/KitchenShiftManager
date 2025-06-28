@@ -56,10 +56,10 @@ Git リポジトリ初期化、Docker-Compose（dev & prod）、VS Code 推奨�
 - [x] ブランチ保護設定
 
 ### Docker環境構築
-- [ ] docker-compose.dev.yml の作成
-- [ ] docker-compose.prod.yml の作成
-- [ ] Multi-stage Dockerfile の作成
-- [ ] PostgreSQL コンテナ設定
+- [x] docker-compose.dev.yml の作成
+- [x] docker-compose.prod.yml の作成
+- [x] Multi-stage Dockerfile の作成
+- [x] PostgreSQL コンテナ設定
 
 ### Rails API セットアップ
 - [ ] Rails new でAPI-onlyアプリ作成
