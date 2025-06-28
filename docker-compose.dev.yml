@@ -1,0 +1,56 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: devpass
+      POSTGRES_DB: attendance_dev
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dev"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    command: bash -c "bundle install && rails s -b 0.0.0.0"
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+    environment:
+      - RAILS_ENV=development
+      - DATABASE_URL=postgresql://dev:devpass@db:5432/attendance_dev
+      - RAILS_LOG_TO_STDOUT=1
+    ports: 
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+
+  frontend:
+    image: node:22.17.0-alpine
+    working_dir: /frontend
+    command: npm run dev -- --host
+    volumes:
+      - ./frontend:/frontend
+      - node_modules_cache:/frontend/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_BASE=http://localhost:3000
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
+  bundle_cache:
+  node_modules_cache:
