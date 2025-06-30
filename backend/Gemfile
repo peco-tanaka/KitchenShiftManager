@@ -1,62 +1,60 @@
 source "https://rubygems.org"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+# Rails本体
 gem "rails", "~> 7.2.2"
-# Use postgresql as the database for Active Record
+# Active RecordでPostgreSQLを使う
 gem "pg", "~> 1.1"
-# Use the Puma web server [https://github.com/puma/puma]
+# Pumaウェブサーバー [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
+# JSON API用 [https://github.com/rails/jbuilder]
 # gem "jbuilder"
-# Use Redis adapter to run Action Cable in production
+# 本番でAction Cable用Redis
 # gem "redis", ">= 4.0.1"
 
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
+# Redisの高機能データ型 [https://github.com/rails/kredis]
 # gem "kredis"
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+# パスワード認証用 [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# Windows用タイムゾーンデータ
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-# Reduces boot times through caching; required in config/boot.rb
+# 起動高速化
 gem "bootsnap", require: false
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+# 画像変換 [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
+# CORS対応
 gem "rack-cors"
 
-# Authentication
+# 認証
 gem "devise", "~> 4.9.4"
 
-# Authorization
+# 認可
 gem "pundit", "~> 2.3"
 
-# Excel generation
-gem "axlsx", "~> 4.1"
-gem "zip-zip"  # Required for axlsx
+# Excel出力
+gem "rubyXL", "~> 3.4"
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  # デバッグ用
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  # セキュリティ脆弱性チェック [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop-rails-omakase", require: false
+  # コードスタイルチェック (利用可能な最新版: 1.77)
+  gem "rubocop", "~> 1.77", require: false
 
-  # Testing framework
-  gem "rspec-rails", "~> 7.2"
-  gem "factory_bot_rails", "~> 7.5"
+  # テスト(RSpec/FactoryBot)
+  gem "rspec-rails", "~> 8.0"
+  gem "factory_bot_rails", "~> 6.5"
 end
 
 group :development do
-  # Environment variables for development
+  # 環境変数管理
   gem "dotenv-rails", "~> 3.1"
 end
-
 
