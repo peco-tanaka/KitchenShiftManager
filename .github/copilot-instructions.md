@@ -17,6 +17,12 @@
     - logs/ も参照し、関連する Tips があれば提案に活かす
     - 新しい設計判断や障害対応を行った場合は、該当フォルダへの追記を促すこと
 ##ターミナルのコマンドは、一度に実行するのではなく、段階的に細分化して実行します。
+  - コマンド例：
+    - 細分化前: `docker run --rm -v "$(pwd)/backend:/app" -w /app ruby:3.4.4 bash -c "gem install rails -v 7.2.2 && rails new . --api --database=postgresql --skip-git --skip-bundle"`
+    - 細分化後:
+      1. `docker run --rm -v "$(pwd)/backend:/app" -w /app ruby:3.4.4 bash"
+      2. `gem install rails -v 7.2.2`
+      3. `rails new . --api --database=postgresql --skip-git --skip-bundle`
 
 ## プロジェクト概要
 厨房シフト管理システム - キッチンスタッフの出退勤管理とシフト管理を行うWebアプリケーション
