@@ -22,7 +22,7 @@ services:
       target: dev
     command: bash -c "bundle install && rails s -b 0.0.0.0"
     volumes:
-      - .:/app
+      - ./backend:/app
       - bundle_cache:/usr/local/bundle
     environment:
       - RAILS_ENV=development
