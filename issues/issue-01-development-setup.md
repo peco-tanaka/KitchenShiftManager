@@ -63,6 +63,7 @@ Git リポジトリ初期化、Docker-Compose（dev & prod）、VS Code 推奨�
 
 ### Rails API セットアップ
 - [ ] Rails new でAPI-onlyアプリ作成
+- [ ] Railsサーバー接続確認
 - [ ] Gemfile の設定（必要な gem の追加）
 - [ ] データベース設定
 - [ ] CORS設定
