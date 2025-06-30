@@ -1,6 +1,6 @@
 # セキュリティ上重要なファイル
-/config/master.key
-/config/application.yml
+/backend/config/master.key
+/backend/config/application.yml
 .env
 .env.local
 .env.development.local
@@ -15,40 +15,57 @@
 /db/*.sqlite3-journal
 /db/*.sqlite3-*
 
-# ログ・一時ファイル
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+# バックエンド: ログ・一時ファイル
+/backend/log/*
+!/backend/log/.keep
+/backend/tmp/*
+!/backend/tmp/.keep
+!/backend/tmp/pids
+!/backend/tmp/pids/.keep
+!/backend/tmp/storage
+!/backend/tmp/storage/.keep
 
-# pidファイル（ディレクトリは保持）
-/tmp/pids/*
-!/tmp/pids/
-!/tmp/pids/.keep
+# バックエンド: pidファイル
+/backend/tmp/pids/*
+!/backend/tmp/pids/
+!/backend/tmp/pids/.keep
 
-# アップロードファイル（開発環境）
-/storage/*
-!/storage/.keep
-/tmp/storage/*
-!/tmp/storage/
-!/tmp/storage/.keep
+# バックエンド: アップロードファイル
+/backend/storage/*
+!/backend/storage/.keep
 
-# node_modules
-node_modules/
+# フロントエンド: 成果物・依存ファイル
+/frontend/dist/
+/frontend/node_modules/
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+/frontend/.vite/
+/frontend/coverage/
+/frontend/test-results/
 
-# yarn関連
-/yarn-error.log
+# バックエンド: テストレポート
+/backend/test/reports/
+
+# node/yarn/pnpmデバッグログ
+npm-debug.log*
 yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 .yarn-integrity
+/yarn-error.log
 
 # byebug履歴
 .byebug_history
 
 # Dockerボリューム
-docker-volumes/
+/docker-volumes/
 
 # VS Code設定
-.vscode/settings.json
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
 
 # macOSファイル
 .DS_Store
@@ -63,24 +80,18 @@ sample_v202506.xlsx
 # カバレッジ
 /coverage/
 
-# フロントエンド成果物
-/frontend/dist/
-/frontend/.env.local
-/frontend/.env.development.local
-/frontend/.env.test.local
-/frontend/.env.production.local
-
-# npm/pnpmデバッグログ
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Viteキャッシュ
-/frontend/.vite/
+# TypeScript
+*.tsbuildinfo
 
 # ランタイムデータ
 pids
 *.pid
 *.seed
 *.pid.lock
+
+# Rails固有のファイル
+/backend/public/assets
+/backend/config/credentials/*.key
+/backend/public/packs
+/backend/public/packs-test
+/backend/config/database.yml
