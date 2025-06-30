@@ -1,7 +1,4 @@
 class ApplicationController < ActionController::API
-  # CSRF保護（API-onlyでも将来のSession認証のため）
-  protect_from_forgery with: :null_session
-
   # API共通設定
   before_action :set_default_response_format
 
