@@ -1,0 +1,14 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Removed unused .logo class, hover states, and @keyframes logo-spin */
+
+.card {
+  padding: 2em;
+}
+
+/* Removed unused .read-the-docs class */
