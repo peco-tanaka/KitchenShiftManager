@@ -47,6 +47,7 @@ group :development, :test do
 
   # コードスタイルチェック (利用可能な最新版: 1.77)
   gem "rubocop", "~> 1.77", require: false
+  gem "rubocop-rails-omakase", "~> 1.1.o", require: false
 
   # テスト(RSpec/FactoryBot)
   gem "rspec-rails", "~> 8.0"
