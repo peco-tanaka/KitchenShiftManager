@@ -30,7 +30,7 @@
     - logs/ も参照し、関連する Tips があれば提案に活かす
     - 新しい設計判断や障害対応を行った場合は、該当フォルダへの追記を促すこと
 **/doc/knowledge/内のファイル名テンプレートは以下です
-    - desicions/issue01/1-issue-title.md
+    - decisions/issue01/1-issue-title.md
     - decisions/issue01/completion-summary.md
     - logs/issue01/1-issue-title.md
     - logs/issue01/overall-flow.md
