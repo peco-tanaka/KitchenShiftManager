@@ -91,7 +91,11 @@
 - Auto-Deploy 設定
 - 本番環境動作確認
 
-## 開発環境セットアップ
+## セットアップ
+
+### 前提条件
+- Docker Desktop
+- Git
 
 ### 1. リポジトリのクローン
 ```bash
@@ -101,32 +105,19 @@ cd KitchenShiftManager
 
 ### 2. 環境変数ファイルの設定
 
-環境変数ファイルのテンプレートから実際の設定ファイルを作成します：
+**重要**: セキュリティ上、実際のパスワードは環境変数ファイルに設定し、Git管理から除外してください。
 
-#### 開発環境
 ```bash
+# 開発環境
 cp .env.development.template .env.development
+# .env.development を編集して適切なパスワードを設定
+
+# 本番環境（デプロイ時）
+cp .env.production.template .env.production
+# .env.production を編集して本番環境用の設定を入力
 ```
 
-#### テスト環境（必要に応じて）
-```bash
-cp .env.test.template .env.test
-```
-
-#### 本番環境（Render等でのデプロイ時）
-`.env.production.template` を参考に、プラットフォームの環境変数設定で値を指定してください。
-
-### 3. 環境変数ファイルの説明
-
-| ファイル | 用途 | Git管理 |
-|---|---|---|
-| `.env.development.template` | 開発環境のテンプレート | ✅ 管理対象 |
-| `.env.test.template` | テスト環境のテンプレート | ✅ 管理対象 |
-| `.env.production.template` | 本番環境のテンプレート | ✅ 管理対象 |
-| `.env.development` | 開発環境の実際の設定 | ❌ 除外 |
-| `.env.test` | テスト環境の実際の設定 | ❌ 除外 |
-
-### 4. Docker Compose での起動
+### 3. Docker Compose での起動
 ```bash
 # 開発環境での起動
 docker compose -f docker-compose.dev.yml up -d
@@ -135,24 +126,10 @@ docker compose -f docker-compose.dev.yml up -d
 docker compose -f docker-compose.dev.yml exec backend rails db:create db:migrate
 ```
 
-## データベース設定について
-
-このプロジェクトでは、セキュリティと環境の柔軟性を保つため、データベース設定を環境変数で管理しています。
-
-- `backend/config/database.yml` は環境変数参照のテンプレートとしてGit管理されています
-- 実際の接続情報は `.env.*` ファイルで管理
-- 各環境（開発・テスト・本番）で異なる設定を適用可能
-
-### データベース接続に使用する環境変数
-
-| 環境変数名 | 説明 | デフォルト値 |
-|---|---|---|
-| `DATABASE_HOST` | データベースホスト | localhost |
-| `DATABASE_NAME` | データベース名 | attendance_dev |
-| `DATABASE_USERNAME` | ユーザー名 | dev |
-| `DATABASE_PASSWORD` | パスワード | devpass |
-| `DATABASE_PORT` | ポート番号 | 5432 |
-| `DATABASE_URL` | 接続URL（まとめて指定する場合） | - |
+### アクセスURL
+- フロントエンド: http://localhost:5173
+- バックエンドAPI: http://localhost:3000
+- PostgreSQL: localhost:5432
 
 ## 設計ドキュメント
 
@@ -177,3 +154,10 @@ docker compose -f docker-compose.dev.yml exec backend rails db:create db:migrate
 2. Issue番号順に順次開発を進める
 3. 各Issueの受入条件をすべて満たしてから次に進む
 4. 適宜コミット・プッシュし、進捗を記録
+
+## セキュリティ注意事項
+
+- `.env.*` ファイルは Git 管理対象外です（`.gitignore` で除外済み）
+- テンプレートファイル（`.env.*.template`）には実際のパスワードを含めないでください
+- 本番環境では必ず強固なパスワードと秘密鍵を使用してください
+- 開発環境でも、推測されやすいパスワードの使用は避けてください
