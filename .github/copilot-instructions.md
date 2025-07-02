@@ -1,11 +1,24 @@
 # GitHub Copilot カスタムインストラクション
 
 ## 重要な指示
+**タスクに取り組む時、コーディング前に必ず実装の意図を開発者に説明してください。学習に繋げる目的のためです**
 **コード生成・提案の前に必ず `/doc/詳細設計.md` ファイルを確認し、そこに記載された技術仕様・アーキテクチャ・実装方針に従ってください。詳細設計が最優先の参考資料です。**
 **破壊的な変更を伴う場合には必ず確認をとってください。**
 **`/doc/詳細設計.md` ファイルの内容から変更を加える必要がある場合には、必ず確認をとってください。**
-**`/issues`ディレクトリ内の各issueにそって実装を進めてください。**
-**`/issues`ディレクトリ内の各issueファイルの項目について、完了したらチェックを入れてください。**
+##ターミナルのコマンドは、一度に実行するのではなく、段階的に細分化して実行します。
+  - コマンド例：
+    - 細分化前: `docker run --rm -v "$(pwd)/backend:/app" -w /app ruby:3.4.4 bash -c "gem install rails -v 7.2.2 && rails new . --api --database=postgresql --skip-git --skip-bundle"`
+    - 細分化後:
+      1. `docker run --rm -v "$(pwd)/backend:/app" -w /app ruby:3.4.4 bash"
+      2. `gem install rails -v 7.2.2`
+      3. `rails new . --api --database=postgresql --skip-git --skip-bundle`
+
+## プロジェクト概要
+飲食店勤怠管理システム - 小規模飲食店の出退勤管理とシフト管理を行うWebアプリケーション
+
+## 開発ガイドライン
+**`/issues`ディレクトリ内の各issueにそってステップバイステップで実装を進めてください。**
+**`/issues`ディレクトリ内の各issueファイルのタスクについて、完了したらチェックを入れてください。**
 **`/issues`のタスクが進んだら、適切な粒度で/doc/knowledge/内のドキュメントを更新してください。**
     - `decisions/` `logs`: それぞれ一つのissueに対して1フォルダずつ用意し、更新内容を記述したファイルを作成・更新
     - 粒度: まとまったタスクが終了した時点
@@ -16,16 +29,11 @@
     - decisions/ を詳細設計.md と同格に扱う
     - logs/ も参照し、関連する Tips があれば提案に活かす
     - 新しい設計判断や障害対応を行った場合は、該当フォルダへの追記を促すこと
-##ターミナルのコマンドは、一度に実行するのではなく、段階的に細分化して実行します。
-  - コマンド例：
-    - 細分化前: `docker run --rm -v "$(pwd)/backend:/app" -w /app ruby:3.4.4 bash -c "gem install rails -v 7.2.2 && rails new . --api --database=postgresql --skip-git --skip-bundle"`
-    - 細分化後:
-      1. `docker run --rm -v "$(pwd)/backend:/app" -w /app ruby:3.4.4 bash"
-      2. `gem install rails -v 7.2.2`
-      3. `rails new . --api --database=postgresql --skip-git --skip-bundle`
-
-## プロジェクト概要
-厨房シフト管理システム - キッチンスタッフの出退勤管理とシフト管理を行うWebアプリケーション
+**/doc/knowledge/内のファイル名テンプレートは以下です
+    - desicions/issue01/1-issue-title.md
+    - decisions/issue01/completion-summary.md
+    - logs/issue01/1-issue-title.md
+    - logs/issue01/overall-flow.md
 
 ## 技術スタック
 - **言語**: Ruby 3.4.4
