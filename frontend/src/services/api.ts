@@ -3,7 +3,7 @@
   API通信の共通処理を集約し、フロントエンドからのAPI呼び出しを簡潔かつ型安全に行うための基盤ファイル
  */
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_BASE || '/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE || '/api';
 
 export interface HealthResponse {
   status: string;
