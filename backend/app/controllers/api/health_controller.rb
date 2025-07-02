@@ -3,7 +3,7 @@ class Api::HealthController < ApplicationController
   # GET /api/health
   def index
     database_status = check_database_connection
-    
+
     render json: {
       status: database_status[:connected] ? "healthy" : "unhealthy",
       service: "Kitchen Shift Manager API",

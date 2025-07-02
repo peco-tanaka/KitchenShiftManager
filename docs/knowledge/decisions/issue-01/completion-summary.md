@@ -23,11 +23,13 @@
 - [x] docker-compose.prod.yml作成
 - [x] Multi-stage Dockerfile作成
 - [x] PostgreSQL 16コンテナ設定
+- [x] **環境変数管理の統一化** (2025/7/2追加)
 
 #### Rails API セットアップ
 - [x] Rails 7.2.2.1 API-onlyアプリ作成
 - [x] Gemfile調整 (rubyXL, RuboCop等)
 - [x] データベース設定・環境変数対応
+- [x] **database.yml完全環境変数化** (2025/7/2追加)
 - [x] CORS設定 (Session Cookie対応)
 - [x] ヘルスチェックエンドポイント実装
 

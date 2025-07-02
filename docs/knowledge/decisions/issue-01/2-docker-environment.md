@@ -95,7 +95,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.prod
     environment:
-      - VITE_API_BASE_URL=${VITE_API_BASE_URL}
+      - VITE_API_BASE=${VITE_API_BASE}
 ```
 
 **理由**:

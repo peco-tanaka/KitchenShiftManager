@@ -91,20 +91,45 @@
 - Auto-Deploy 設定
 - 本番環境動作確認
 
-## ローカル開発環境のセットアップ
+## セットアップ
+
+### 前提条件
+- Docker Desktop
+- Git
+
+### 1. リポジトリのクローン
+```bash
+git clone <repository-url>
+cd KitchenShiftManager
+```
+
+### 2. 環境変数ファイルの設定
+
+**重要**: セキュリティ上、実際のパスワードは環境変数ファイルに設定し、Git管理から除外してください。
 
 ```bash
-# リポジトリクローン
-git clone git@github.com:peco-tanaka/KitchenShiftManager.git
-cd KitchenShiftManager
+# 開発環境
+cp .env.development.template .env.development
+# .env.development を編集して適切なパスワードを設定
 
-# 開発環境起動（Issue #1 完了後に利用可能）
-docker compose up
-
-# アプリケーションアクセス
-# フロントエンド: http://localhost:5173
-# バックエンドAPI: http://localhost:3000
+# 本番環境（デプロイ時）
+cp .env.production.template .env.production
+# .env.production を編集して本番環境用の設定を入力
 ```
+
+### 3. Docker Compose での起動
+```bash
+# 開発環境での起動
+docker compose -f docker-compose.dev.yml up -d
+
+# データベースの作成・マイグレーション
+docker compose -f docker-compose.dev.yml exec backend rails db:create db:migrate
+```
+
+### アクセスURL
+- フロントエンド: http://localhost:5173
+- バックエンドAPI: http://localhost:3000
+- PostgreSQL: localhost:5432
 
 ## 設計ドキュメント
 
@@ -130,6 +155,9 @@ docker compose up
 3. 各Issueの受入条件をすべて満たしてから次に進む
 4. 適宜コミット・プッシュし、進捗を記録
 
-## ライセンス
+## セキュリティ注意事項
 
-MIT License
+- `.env.*` ファイルは Git 管理対象外です（`.gitignore` で除外済み）
+- テンプレートファイル（`.env.*.template`）には実際のパスワードを含めないでください
+- 本番環境では必ず強固なパスワードと秘密鍵を使用してください
+- 開発環境でも、推測されやすいパスワードの使用は避けてください
