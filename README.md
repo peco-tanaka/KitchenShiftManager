@@ -93,17 +93,51 @@
 
 ## ローカル開発環境のセットアップ
 
+### 1. 環境変数の設定
+
+開発環境で使用する環境変数は `.env.development` ファイルに設定されています。
+
+```bash
+# 環境変数ファイルの内容確認（デフォルト設定で動作します）
+cat .env.development
+```
+
+### 2. アプリケーションの起動
+
 ```bash
 # リポジトリクローン
 git clone git@github.com:peco-tanaka/KitchenShiftManager.git
 cd KitchenShiftManager
 
 # 開発環境起動（Issue #1 完了後に利用可能）
-docker compose up
+docker compose -f docker-compose.dev.yml up
 
 # アプリケーションアクセス
 # フロントエンド: http://localhost:5173
 # バックエンドAPI: http://localhost:3000
+```
+
+### 3. 本番環境での環境変数設定
+
+本番環境（Render）では、以下の環境変数を設定してください：
+
+```bash
+# データベース設定（Render PostgreSQL から取得）
+DATABASE_HOST=your-render-postgres-host
+DATABASE_NAME=your-render-postgres-db
+DATABASE_USERNAME=your-render-postgres-user
+DATABASE_PASSWORD=your-render-postgres-password
+DATABASE_PORT=5432
+DATABASE_URL=postgresql://user:pass@host:port/dbname
+
+# Rails設定
+RAILS_ENV=production
+SECRET_KEY_BASE=your-secret-key-base
+RAILS_SERVE_STATIC_FILES=true
+RAILS_LOG_TO_STDOUT=1
+
+# フロントエンド設定
+VITE_API_BASE=https://your-render-app-url.onrender.com
 ```
 
 ## 設計ドキュメント

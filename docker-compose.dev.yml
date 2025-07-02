@@ -24,10 +24,8 @@ services:
     volumes:
       - ./backend:/app
       - bundle_cache:/usr/local/bundle
-    environment:
-      - RAILS_ENV=development
-      - DATABASE_URL=postgresql://dev:devpass@db:5432/attendance_dev
-      - RAILS_LOG_TO_STDOUT=1
+    env_file:
+      - .env.development
     ports: 
       - "3000:3000"
     depends_on:
@@ -45,8 +43,8 @@ services:
       - node_modules_cache:/frontend/node_modules
     ports:
       - "5173:5173"
-    environment:
-      - VITE_API_BASE=http://localhost:3000
+    env_file:
+      - .env.development
     depends_on:
       - backend
 
