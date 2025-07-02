@@ -91,54 +91,68 @@
 - Auto-Deploy 設定
 - 本番環境動作確認
 
-## ローカル開発環境のセットアップ
+## 開発環境セットアップ
 
-### 1. 環境変数の設定
-
-開発環境で使用する環境変数は `.env.development` ファイルに設定されています。
-
+### 1. リポジトリのクローン
 ```bash
-# 環境変数ファイルの内容確認（デフォルト設定で動作します）
-cat .env.development
-```
-
-### 2. アプリケーションの起動
-
-```bash
-# リポジトリクローン
-git clone git@github.com:peco-tanaka/KitchenShiftManager.git
+git clone <repository-url>
 cd KitchenShiftManager
-
-# 開発環境起動（Issue #1 完了後に利用可能）
-docker compose -f docker-compose.dev.yml up
-
-# アプリケーションアクセス
-# フロントエンド: http://localhost:5173
-# バックエンドAPI: http://localhost:3000
 ```
 
-### 3. 本番環境での環境変数設定
+### 2. 環境変数ファイルの設定
 
-本番環境（Render）では、以下の環境変数を設定してください：
+環境変数ファイルのテンプレートから実際の設定ファイルを作成します：
 
+#### 開発環境
 ```bash
-# データベース設定（Render PostgreSQL から取得）
-DATABASE_HOST=your-render-postgres-host
-DATABASE_NAME=your-render-postgres-db
-DATABASE_USERNAME=your-render-postgres-user
-DATABASE_PASSWORD=your-render-postgres-password
-DATABASE_PORT=5432
-DATABASE_URL=postgresql://user:pass@host:port/dbname
-
-# Rails設定
-RAILS_ENV=production
-SECRET_KEY_BASE=your-secret-key-base
-RAILS_SERVE_STATIC_FILES=true
-RAILS_LOG_TO_STDOUT=1
-
-# フロントエンド設定
-VITE_API_BASE=https://your-render-app-url.onrender.com
+cp .env.development.template .env.development
 ```
+
+#### テスト環境（必要に応じて）
+```bash
+cp .env.test.template .env.test
+```
+
+#### 本番環境（Render等でのデプロイ時）
+`.env.production.template` を参考に、プラットフォームの環境変数設定で値を指定してください。
+
+### 3. 環境変数ファイルの説明
+
+| ファイル | 用途 | Git管理 |
+|---|---|---|
+| `.env.development.template` | 開発環境のテンプレート | ✅ 管理対象 |
+| `.env.test.template` | テスト環境のテンプレート | ✅ 管理対象 |
+| `.env.production.template` | 本番環境のテンプレート | ✅ 管理対象 |
+| `.env.development` | 開発環境の実際の設定 | ❌ 除外 |
+| `.env.test` | テスト環境の実際の設定 | ❌ 除外 |
+
+### 4. Docker Compose での起動
+```bash
+# 開発環境での起動
+docker compose -f docker-compose.dev.yml up -d
+
+# データベースの作成・マイグレーション
+docker compose -f docker-compose.dev.yml exec backend rails db:create db:migrate
+```
+
+## データベース設定について
+
+このプロジェクトでは、セキュリティと環境の柔軟性を保つため、データベース設定を環境変数で管理しています。
+
+- `backend/config/database.yml` は環境変数参照のテンプレートとしてGit管理されています
+- 実際の接続情報は `.env.*` ファイルで管理
+- 各環境（開発・テスト・本番）で異なる設定を適用可能
+
+### データベース接続に使用する環境変数
+
+| 環境変数名 | 説明 | デフォルト値 |
+|---|---|---|
+| `DATABASE_HOST` | データベースホスト | localhost |
+| `DATABASE_NAME` | データベース名 | attendance_dev |
+| `DATABASE_USERNAME` | ユーザー名 | dev |
+| `DATABASE_PASSWORD` | パスワード | devpass |
+| `DATABASE_PORT` | ポート番号 | 5432 |
+| `DATABASE_URL` | 接続URL（まとめて指定する場合） | - |
 
 ## 設計ドキュメント
 
@@ -163,7 +177,3 @@ VITE_API_BASE=https://your-render-app-url.onrender.com
 2. Issue番号順に順次開発を進める
 3. 各Issueの受入条件をすべて満たしてから次に進む
 4. 適宜コミット・プッシュし、進捗を記録
-
-## ライセンス
-
-MIT License

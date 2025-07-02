@@ -5,7 +5,9 @@
 .env.local
 .env.development
 .env.development.local
+.env.test
 .env.test.local
+.env.production
 .env.production.local
 
 # Bundler設定
@@ -107,4 +109,3 @@ pids
 /backend/config/credentials/*.key
 /backend/public/packs
 /backend/public/packs-test
-/backend/config/database.yml
