@@ -58,4 +58,3 @@ group :development do
   # 環境変数管理
   gem "dotenv-rails", "~> 3.1"
 end
-
