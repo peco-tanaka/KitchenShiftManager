@@ -32,7 +32,7 @@ module KitchenShiftManager
     # 認証（Devise）用にセッションおよびクッキーのミドルウェアを有効化
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore, {
-      key: '_kitchen_shift_manager_session',
+      key: "_kitchen_shift_manager_session",
       same_site: :lax,
       secure: Rails.env.production?,
       http_only: true
