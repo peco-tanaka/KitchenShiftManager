@@ -1,13 +1,14 @@
 # GitHub Copilot カスタムインストラクション
 
 ## 重要な指示
+**詳細設計が何よりも最優先される参考資料です。**
+**コード生成・提案の前に必ず `/doc/詳細設計.md` ファイルを確認し、そこに記載された技術仕様・アーキテクチャ・実装方針に従ってください**
 **タスクに取り組む時、コーディング前に必ず`実装の概要`・`技術的解説`を開発者に説明してください。学習に繋げる目的のためです**
 **コーディング作業はこまめに分割し、段階的に進めてください。**
 **コーディングについては、1つのコーディングタスクが完了した時点で解説を必ず行なってください**
-**コード生成・提案の前に必ず `/doc/詳細設計.md` ファイルを確認し、そこに記載された技術仕様・アーキテクチャ・実装方針に従ってください。詳細設計が最優先の参考資料です。**
 **破壊的な変更を伴う場合には必ず確認をとってください。**
 **`/doc/詳細設計.md` ファイルの内容から変更を加える必要がある場合には、必ず確認をとってください。**
-##ターミナルのコマンドは、一度に実行するのではなく、段階的に細分化して実行します。
+**ターミナルのコマンドは、一度に実行するのではなく、段階的に細分化して実行します。**
   - コマンド例：
     - 細分化前: `docker run --rm -v "$(pwd)/backend:/app" -w /app ruby:3.4.4 bash -c "gem install rails -v 7.2.2 && rails new . --api --database=postgresql --skip-git --skip-bundle"`
     - 細分化後:
@@ -19,38 +20,38 @@
 飲食店勤怠管理システム - 小規模飲食店の出退勤管理とシフト管理を行うWebアプリケーション
 
 ## 開発ガイドライン
-**`/issues`ディレクトリ内の各issueにそってステップバイステップで実装を進めてください。**
+**`/issues`ディレクトリ内の各issueに沿ってステップバイステップで実装を進めてください。**
+**`/issues`のタスクに取り掛かる時、/doc/knowledge/内の Markdown ファイルを必ずインデックスしてください**
+  - decisions/ を詳細設計.md と同格に扱う
+  - logs/ も参照し、関連する Tips があれば提案に活かす
+  - 新しい設計判断や障害対応を行った場合は、該当フォルダへの追記を促すこと
 **`/issues`ディレクトリ内の各issueファイルのタスクについて、完了したらチェックを入れてください。**
 **`/issues`のタスクが進んだら、適切な粒度で/doc/knowledge/内のドキュメントを更新してください。**
-    - `decisions/` `logs`: それぞれ一つのissueに対して1フォルダずつ用意し、更新内容を記述したファイルを作成・更新
-    - 粒度: まとまったタスクが終了した時点
-    - `decisions/`フォルダの内容: 主要な設計判断 & 変更履歴
-    - `logs/`フォルダの内容: 実装履歴 & 障害対応履歴 & Tips
+  - `decisions/` `logs`: それぞれ一つのissueに対して1フォルダずつ用意し、更新内容を記述したファイルを作成・更新
+  - 粒度: まとまったタスクが終了した時点
+  - `decisions/`フォルダの内容: 主要な設計判断 & 変更履歴
+  - `logs/`フォルダの内容: 実装履歴 & 障害対応履歴 & Tips
 **/doc/knowledge/内の更新をする場合には必ず確認をとってください**
-**/doc/knowledge/内の Markdown ファイルを必ずインデックスし、**
-    - decisions/ を詳細設計.md と同格に扱う
-    - logs/ も参照し、関連する Tips があれば提案に活かす
-    - 新しい設計判断や障害対応を行った場合は、該当フォルダへの追記を促すこと
-**/doc/knowledge/内のファイル名テンプレートは以下です
-    - decisions/issue01/Phase1-issue-title.md
-    - decisions/issue01/completion-summary.md
-    - logs/issue01/Phase1-issue-title.md
-    - logs/issue01/overall-flow.md
+**/doc/knowledge/内のファイル名テンプレートは以下です**
+  - decisions/issue01/Phase1-issue-title.md
+  - decisions/issue01/completion-summary.md
+  - logs/issue01/Phase1-issue-title.md
+  - logs/issue01/overall-flow.md
 
 ## 技術スタック
 - **言語**: Ruby 3.4.4
 - **バックエンド**: Ruby on Rails 7.2.2 (API-only モード)
-- **フロントエンド**: React 19.1.0 + TypeScript 5.5.2
+- **フロントエンド**: React 18.3.1 + TypeScript 5.5.2
 - **ビルドツール**: Vite 6.0.0
 - **データベース**: PostgreSQL 16.x
 - **認証**: Devise 4.9.4 (Session-Cookie認証)
 - **認可**: Pundit 2.3
-- **Excel生成**: Axlsx 4.1
+- **Excel生成**: rubyXL 3.4
 - **状態管理**: @tanstack/react-query 5.81.2
-- **ルーティング**: react-router-dom 7.3.0
+- **ルーティング**: react-router-dom 7.6.0
 - **UI/CSS**: Tailwind CSS 4.1 + @headlessui/react 2.2
-- **テスト**: RSpec-Rails 7.2 + FactoryBot-Rails 7.5
-- **Linter**: RuboCop 1.63
+- **テスト**: RSpec-Rails 8.0 + FactoryBot-Rails 7.5
+- **Linter**: RuboCop 2.32
 - **デプロイ**: Render (Docker)
 - **開発環境**: Docker Compose
 
@@ -66,7 +67,7 @@
 - 適切なバリデーションとエラーハンドリング
 
 ### React/TypeScript
-- React 19.1.0 + TypeScript 5.5.2 strictモードを有効化
+- React 18.3.1 + TypeScript 5.5.2 strictモードを有効化
 - 関数コンポーネントとHooksを優先
 - Props型定義を必須とする
 - ESLint/Prettierの設定に従う
