@@ -59,14 +59,14 @@ manager だけ `/admin/*` へアクセス可能、employee は打刻 API のみ�
 - [x] Session Cookie 設定の追加
 
 #### 1.2 User モデル・マイグレーション作成
-- [ ] Devise User モデル生成 (`rails generate devise User`)
-- [ ] マイグレーションファイルのカスタマイズ
-  - [ ] `employee_number` カラム追加（integer, unique, not null）
-  - [ ] `role` カラム追加（integer, default: 0, not null）
-  - [ ] `hourly_wage` カラム追加（integer, not null）
-  - [ ] `hired_on` カラム追加（date, not null）
-  - [ ] `terminated_on` カラム追加（date, nullable）
-- [ ] データベースマイグレーション実行
+- [x] Devise User モデル生成 (`rails generate devise User`)
+- [x] マイグレーションファイルのカスタマイズ
+  - [x] `employee_number` カラム追加（integer, unique, not null）
+  - [x] `role` カラム追加（integer, default: 0, not null）
+  - [x] `hourly_wage` カラム追加（integer, not null）
+  - [x] `hired_on` カラム追加（date, not null）
+  - [x] `terminated_on` カラム追加（date, nullable）
+- [x] データベースマイグレーション実行
 
 #### 1.3 User モデル設定
 - [ ] 認証キーを `employee_number` に変更
