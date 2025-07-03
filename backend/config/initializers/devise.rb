@@ -315,12 +315,4 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 
-  # ==> API用セッションクッキー設定
-  # API認証のためのセッションストアとクッキー設定
-  config.session_store :cookie_store, key: '_kitchen_shift_manager_session'
-  config.cookie_options = {
-    same_site: :lax,
-    secure: Rails.env.production?,
-    http_only: true
-  }
 end
