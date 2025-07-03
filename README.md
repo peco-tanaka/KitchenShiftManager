@@ -22,10 +22,10 @@
 - PostgreSQL 16
 - Devise (認証)
 - Pundit (認可)
-- Axlsx (Excel生成)
+- rubyXL (Excel生成)
 
 ### フロントエンド  
-- React 19.1.0
+- React 18.3.0
 - TypeScript 5.5.2
 - Vite 6.0.0
 - TailwindCSS 4.1
@@ -71,14 +71,14 @@
 **ゴール**: manager が従業員情報・手当を追加／更新でき、打刻側に即反映
 
 - 従業員CRUD API + UI
-- 手当CRUD API + UI  
+- 手当CRUD API + UI
 - 打刻データ手修正機能
 - 管理画面UI
 
 ### Issue #5: Excel 出力連携
 **ゴール**: `勤怠_YYYYMM.xlsx` がダウンロードでき、昼／夜／深夜の実働が正しいセルに入る
 
-- Axlsx による Excel 生成
+- rubyXL による Excel 生成
 - ブロック配置アルゴリズム
 - 時間帯別実働時間転記
 - ダウンロード機能
@@ -105,7 +105,7 @@ cd KitchenShiftManager
 
 ### 2. 環境変数ファイルの設定
 
-**重要**: セキュリティ上、実際のパスワードは環境変数ファイルに設定し、Git管理から除外してください。
+**重要**: セキュリティ上、実際のパスワードは環境変数ファイルに設定し、Git管理から除外します。
 
 ```bash
 # 開発環境
@@ -157,7 +157,6 @@ docker compose -f docker-compose.dev.yml exec backend rails db:create db:migrate
 
 ## セキュリティ注意事項
 
-- `.env.*` ファイルは Git 管理対象外です（`.gitignore` で除外済み）
-- テンプレートファイル（`.env.*.template`）には実際のパスワードを含めないでください
-- 本番環境では必ず強固なパスワードと秘密鍵を使用してください
-- 開発環境でも、推測されやすいパスワードの使用は避けてください
+- `.env.*` ファイルは Git 管理対象外（`.gitignore` で除外済み）
+- テンプレートファイル（`.env.*.template`）には実際のパスワードを含めない
+- 本番環境では必ず強固なパスワードと秘密鍵を使用
