@@ -54,9 +54,9 @@ manager だけ `/admin/*` へアクセス可能、employee は打刻 API のみ�
 ### Phase 1: バックエンド認証基盤（高優先度）
 
 #### 1.1 Devise 初期設定
-- [ ] Devise の初期化実行 (`rails generate devise:install`)
-- [ ] `config/initializers/devise.rb` の基本設定
-- [ ] Session Cookie 設定の追加
+- [x] Devise の初期化実行 (`rails generate devise:install`)
+- [x] `config/initializers/devise.rb` の基本設定
+- [x] Session Cookie 設定の追加
 
 #### 1.2 User モデル・マイグレーション作成
 - [ ] Devise User モデル生成 (`rails generate devise User`)
