@@ -8,14 +8,14 @@ class User < ApplicationRecord
 
   # バリデーション
   validates :employee_number, presence: true, uniqueness: true,
-            format: { with: /\A(?!0000)\d{4}\z/, message: '社員番号は0000以外の4桁の数字で入力してください' }
+            format: { with: /\A(?!0000)\d{4}\z/, message: "社員番号は0000以外の4桁の数字で入力してください" }
   validates :last_name, presence: true
   validates :first_name, presence: true
   validates :hourly_wage, presence: true, numericality: { greater_than: 0 }
   validates :hired_on, presence: true
 
   # パスワードは4桁の数字のみ
-  validates :password, format: { with: /\A\d{4}\z/, message: 'パスワードは4桁の数字で入力してください' },
+  validates :password, format: { with: /\A\d{4}\z/, message: "パスワードは4桁の数字で入力してください" },
             if: :password_required?
 
   # Association（将来の機能拡張用）
