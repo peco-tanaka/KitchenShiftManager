@@ -56,7 +56,7 @@ if Rails.env.development?
 
   begin
     # 既存ユーザーの確認
-    sample_employee = User.find_by(employee_number: 0002)
+    sample_employee = User.find_by(employee_number: "0002")
 
     if sample_employee.present?
       puts "Sample employee user already exists: #{sample_employee.last_name} #{sample_employee.first_name} (Employee Number: #{sample_employee.employee_number})"
