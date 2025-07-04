@@ -9,3 +9,6 @@ https://zenn.dev/mambacom/articles/3dcb1384d147c2
 
 ## コミット規約
 https://zenn.dev/wakamsha/articles/about-conventional-commits
+
+## 社員番号のデータ型
+https://chatgpt.com/s/t_686748ca5cb08191a2ca5c9385e87049
