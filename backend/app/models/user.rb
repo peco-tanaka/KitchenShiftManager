@@ -1,11 +1,10 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   # 飲食店勤怠管理システムでは registerable, recoverable は無効化
-  devise :database_authenticatable, :rememberable, :validatable
+  devise :database_authenticatable, :rememberable
+          :validatable
 
   # ロール定義（enum）
-  enum role: { employee: 0, manager: 1 }
+  enum :role, { employee: 0, manager: 1 }
 
   # バリデーション
   validates :employee_number, presence: true, uniqueness: true,
