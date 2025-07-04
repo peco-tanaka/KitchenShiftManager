@@ -69,17 +69,17 @@ manager だけ `/admin/*` へアクセス可能、employee は打刻 API のみ�
 - [x] データベースマイグレーション実行
 
 #### 1.3 User モデル設定
-- [ ] 認証キーを `employee_number` に変更
-- [ ] `role` enum の定義（`{ employee: 0, manager: 1 }`）
-- [ ] バリデーション追加
-  - [ ] `employee_number` の4桁数字制約
-  - [ ] `password` の4桁数字制約
-  - [ ] その他必須項目のバリデーション
-- [ ] Association の定義
+- [x] 認証キーを `employee_number` に変更
+- [x] `role` enum の定義（`{ employee: 0, manager: 1 }`）
+- [x] バリデーション追加
+  - [x] `employee_number` の4桁数字制約
+  - [x] `password` の4桁数字制約
+  - [x] その他必須項目のバリデーション
+- [x] Association の定義
 
 #### 1.4 初期データ作成
-- [ ] seeds.rb でmanager ユーザー作成
-- [ ] 初期データ投入の動作確認
+- [x] seeds.rb でmanager ユーザー作成
+- [x] 初期データ投入の動作確認
 
 ### Phase 2: 認証API実装（高優先度）
 

@@ -2,7 +2,7 @@
 erDiagram
     users {
         integer  id PK
-        integer  employee_number "UNIQUE ✓"
+        string  employee_number "UNIQUE ✓"
         string   last_name      "苗字"
         string   first_name     "名前"
         string   email           "UNIQUE ✓"

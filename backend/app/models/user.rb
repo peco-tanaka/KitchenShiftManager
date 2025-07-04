@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   # バリデーション
   validates :employee_number, presence: true, uniqueness: true,
-            format: { with: /\A\d{4}\z/, message: '社員番号は4桁の数字で入力してください' }
+            format: { with: /\A(?!0000)\d{4}\z/, message: '社員番号は0000以外の4桁の数字で入力してください' }
   validates :last_name, presence: true
   validates :first_name, presence: true
   validates :hourly_wage, presence: true, numericality: { greater_than: 0 }

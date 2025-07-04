@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_03_092803) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_04_090000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.integer "employee_number", null: false, comment: "社員番号（4桁）"
+    t.string "employee_number", null: false, comment: "社員番号（4桁）"
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
     t.integer "role", default: 0, null: false, comment: "ロール: 0=employee, 1=manager"

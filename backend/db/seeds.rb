@@ -19,7 +19,7 @@ puts "Creating manager user..."
 # 管理者ユーザーの作成
 begin
   # 既存ユーザーの確認
-  manager = User.find_by(employee_number: 1000)
+  manager = User.find_by(employee_number: "0001")
 
   if manager.present?
     puts "Manager user already exists: #{manager.last_name} #{manager.first_name} (Employee Number: #{manager.employee_number})"
@@ -27,7 +27,7 @@ begin
   else
     # 新規作成
     manager = User.create!({
-      employee_number: 1000,
+      employee_number: "0001",
       password: "1000",
       password_confirmation: "1000",
       last_name: "管理者",
@@ -56,7 +56,7 @@ if Rails.env.development?
 
   begin
     # 既存ユーザーの確認
-    sample_employee = User.find_by(employee_number: 1001)
+    sample_employee = User.find_by(employee_number: 0002)
 
     if sample_employee.present?
       puts "Sample employee user already exists: #{sample_employee.last_name} #{sample_employee.first_name} (Employee Number: #{sample_employee.employee_number})"
@@ -64,7 +64,7 @@ if Rails.env.development?
     else
       # 新規作成
       sample_employee = User.create!({
-        employee_number: 1001,
+        employee_number: "0002",
         password: "1001",
         password_confirmation: "1001",
         last_name: "山田",
@@ -101,9 +101,9 @@ else
 end
 
 puts "\n📋 Expected user accounts:"
-puts "  Manager: employee_number=1000, password=1000"
+puts "  Manager: employee_number=0001, password=1000"
 if Rails.env.development?
-  puts "  Sample Employee: employee_number=1001, password=1001"
+  puts "  Sample Employee: employee_number=0002, password=1001"
 end
 puts "\n⚠️  Important: Change passwords in production environment!"
 puts "="*50
