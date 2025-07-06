@@ -2,14 +2,14 @@
 
 module Api
   class SessionsController < ApplicationController
-    # Skip CSRF protection for API authentication endpoints
+    # CSRFトークンを利用しない認証方式の為、CSRF保護をスキップ（セッションCookie認証やトークン認証を利用）
     skip_before_action :verify_authenticity_token, only: [:create, :destroy, :show]
-    
+
     # ログインエンドポイント
     # POST /api/login
     def create
       user = User.find_by(employee_number: login_params[:employee_number])
-      
+
       if user&.valid_password?(login_params[:password])
         # Devise のsign_inヘルパーを使用してセッション開始
         sign_in(user)
