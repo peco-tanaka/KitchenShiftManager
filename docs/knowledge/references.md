@@ -12,3 +12,8 @@ https://zenn.dev/wakamsha/articles/about-conventional-commits
 
 ## 社員番号のデータ型
 https://chatgpt.com/s/t_686748ca5cb08191a2ca5c9385e87049
+
+## APIモードでのCSRF対策（）
+https://chatgpt.com/s/t_686b189098088191b54f8050a283b872
+- APIモードでは`protect_from_forgery`の記述必須（Cookie認証を使用する場合）
+- Cookie認証の方がJWTより実装が早い

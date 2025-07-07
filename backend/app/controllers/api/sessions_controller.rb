@@ -3,7 +3,7 @@
 module Api
   class SessionsController < ApplicationController
     # API認証エンドポイント用のCSRF保護を無効化
-    skip_before_action :verify_authenticity_token, only: [:create, :destroy, :show]
+    skip_before_action :verify_authenticity_token, only: [ :create, :destroy, :show ]
 
     # ログインエンドポイント
     # POST /api/login
@@ -14,14 +14,14 @@ module Api
         # Devise のsign_inヘルパーを使用してセッション開始
         sign_in(user)
         render json: {
-          status: 'success',
-          message: 'ログインしました',
+          status: "success",
+          message: "ログインしました",
           user: user_response(user)
         }, status: :ok
       else
         render json: {
-          status: 'error',
-          message: '社員番号またはパスワードが正しくありません'
+          status: "error",
+          message: "社員番号またはパスワードが正しくありません"
         }, status: :unauthorized
       end
     end
@@ -33,13 +33,13 @@ module Api
         # Devise のsign_outヘルパーを使用してセッション終了
         sign_out(current_user)
         render json: {
-          status: 'success',
-          message: 'ログアウトしました'
+          status: "success",
+          message: "ログアウトしました"
         }, status: :ok
       else
         render json: {
-          status: 'error',
-          message: 'ログインしていません'
+          status: "error",
+          message: "ログインしていません"
         }, status: :unauthorized
       end
     end
@@ -49,13 +49,13 @@ module Api
     def show
       if user_signed_in?
         render json: {
-          status: 'success',
+          status: "success",
           user: user_response(current_user)
         }, status: :ok
       else
         render json: {
-          status: 'error',
-          message: '認証が必要です'
+          status: "error",
+          message: "認証が必要です"
         }, status: :unauthorized
       end
     end
