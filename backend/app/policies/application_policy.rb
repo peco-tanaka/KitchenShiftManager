@@ -8,41 +8,35 @@ class ApplicationPolicy
     @record = record
   end
 
-  # 一覧表示権限
   def index?
     user&.manager?
   end
 
-  # 詳細表示権限
   def show?
     user&.manager?
   end
 
-  # 作成権限
   def create?
     user&.manager?
   end
 
-  # 作成フォーム権限
   def new?
     create?
   end
 
-  # 更新権限
   def update?
     user&.manager?
   end
 
-  # 編集フォーム権限
   def edit?
     update?
   end
 
-  # 削除権限
   def destroy?
     user&.manager?
   end
 
+  # Scopeクラス: 権限に基づくデータフィルタリング
   class Scope
     def initialize(user, scope)
       @user = user

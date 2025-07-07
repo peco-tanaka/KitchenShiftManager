@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
   # Deviseの機能を有効化（Session-Cookie認証用）
   include ActionController::Cookies
   include ActionController::RequestForgeryProtection
-  
+
   # Pundit認可システムを有効化
   include Pundit::Authorization
 
