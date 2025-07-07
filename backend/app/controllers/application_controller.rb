@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::API
-  include DeviseTokenAuthConcern if defined?(DeviseTokenAuthConcern)
-
+  # Deviseの機能を有効化（Session-Cookie認証用）
+  include ActionController::Cookies
+  include ActionController::RequestForgeryProtection
+  
+  # CSRF保護を有効化（APIでは基本的に無効にするが、Deviseとの統合のため）
+  protect_from_forgery with: :null_session
+  
   # API共通設定
   before_action :set_default_response_format
 

@@ -2,7 +2,7 @@
 
 module Api
   class SessionsController < ApplicationController
-    # CSRFトークンを利用しない認証方式の為、CSRF保護をスキップ（セッションCookie認証やトークン認証を利用）
+    # API認証エンドポイント用のCSRF保護を無効化
     skip_before_action :verify_authenticity_token, only: [:create, :destroy, :show]
 
     # ログインエンドポイント
