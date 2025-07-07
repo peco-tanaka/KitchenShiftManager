@@ -1,6 +1,7 @@
 # セキュリティ上重要なファイル
 /backend/config/master.key
 /backend/config/application.yml
+/backend/cookies.txt
 .env
 .env.local
 .env.development
@@ -9,6 +10,7 @@
 .env.test.local
 .env.production
 .env.production.local
+
 
 # Bundler設定
 /.bundle
