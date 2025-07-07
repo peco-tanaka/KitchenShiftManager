@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  get "up" => "rails/health#show", as: :rails_health_check
+  get "up", to: "rails/health#show", as: :rails_health_check
 
   # API routes
   namespace :api do
