@@ -2,9 +2,15 @@ class ApplicationController < ActionController::API
   # Deviseの機能を有効化（Session-Cookie認証用）
   include ActionController::Cookies
   include ActionController::RequestForgeryProtection
+  
+  # Pundit認可システムを有効化
+  include Pundit::Authorization
 
   # CSRF保護を有効化（APIでは基本的に無効にするが、Deviseとの統合のため）
   protect_from_forgery with: :null_session
+
+  # Punditの認証失敗時のエラーハンドリング
+  rescue_from Pundit::NotAuthorizedError, with: :handle_unauthorized
 
   # API共通設定
   before_action :set_default_response_format
@@ -47,5 +53,13 @@ class ApplicationController < ActionController::API
 
   def set_default_response_format
     request.format = :json
+  end
+
+  # Pundit認可失敗時のエラーハンドリング
+  def handle_unauthorized
+    render json: {
+      status: "error",
+      message: "この操作を実行する権限がありません。"
+    }, status: :forbidden
   end
 end
