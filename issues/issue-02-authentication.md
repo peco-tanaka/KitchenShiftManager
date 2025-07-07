@@ -101,18 +101,18 @@ manager だけ `/admin/*` へアクセス可能、employee は打刻 API のみ�
 ### Phase 3: 認可システム（中優先度）
 
 #### 3.1 Pundit 設定
-- [ ] Pundit 初期化 (`rails generate pundit:install`)
-- [ ] `ApplicationPolicy` の基本設定
-- [ ] `ApplicationController` にPundit include
+- [x] Pundit 初期化 (`rails generate pundit:install`)
+- [x] `ApplicationPolicy` の基本設定
+- [x] `ApplicationController` にPundit include
 
 #### 3.2 ポリシー作成
-- [ ] `UserPolicy` 作成
-- [ ] manager/employee の権限定義
-- [ ] admin機能への制限実装
+- [x] `UserPolicy` 作成
+- [x] manager/employee の権限定義
+- [x] admin機能への制限実装
 
 #### 3.3 コントローラー保護
-- [ ] 各コントローラーでの認可チェック実装
-- [ ] `before_action` での認証・認可確認
+- [x] 各コントローラーでの認可チェック実装
+- [x] `before_action` での認証・認可確認
 
 ### Phase 4: フロントエンド認証（中優先度）
 
