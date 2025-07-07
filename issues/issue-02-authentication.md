@@ -95,8 +95,8 @@ manager だけ `/admin/*` へアクセス可能、employee は打刻 API のみ�
 - [x] API用エラーハンドリング
 
 #### 2.3 ルーティング設定
-- [ ] `config/routes.rb` に認証API追加
-- [ ] 動作確認（curl またはPostmanでテスト）
+- [x] `config/routes.rb` に認証API追加
+- [x] 動作確認（curl またはPostmanでテスト）
 
 ### Phase 3: 認可システム（中優先度）
 
