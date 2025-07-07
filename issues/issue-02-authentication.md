@@ -84,19 +84,19 @@ manager だけ `/admin/*` へアクセス可能、employee は打刻 API のみ�
 ### Phase 2: 認証API実装（高優先度）
 
 #### 2.1 認証コントローラー作成
-- [ ] `Api::SessionsController` 作成
-- [ ] ログインエンドポイント実装 (`POST /api/login`)
-- [ ] ログアウトエンドポイント実装 (`POST /api/logout`)
-- [ ] 現在ユーザー取得実装 (`GET /api/me`)
+- [x] `Api::SessionsController` 作成
+- [x] ログインエンドポイント実装 (`POST /api/login`)
+- [x] ログアウトエンドポイント実装 (`POST /api/logout`)
+- [x] 現在ユーザー取得実装 (`GET /api/me`)
 
 #### 2.2 ApplicationController 基盤設定
-- [ ] CSRF保護の設定 (`protect_from_forgery with: :exception`)
-- [ ] Session設定の最適化
-- [ ] API用エラーハンドリング
+- [x] CSRF保護の設定 (`protect_from_forgery with: :null_session`)
+- [x] Session設定の最適化
+- [x] API用エラーハンドリング
 
 #### 2.3 ルーティング設定
-- [ ] `config/routes.rb` に認証API追加
-- [ ] 動作確認（curl またはPostmanでテスト）
+- [x] `config/routes.rb` に認証API追加
+- [x] 動作確認（curl またはPostmanでテスト）
 
 ### Phase 3: 認可システム（中優先度）
 
