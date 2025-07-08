@@ -1,6 +1,10 @@
 class Api::HealthController < ApplicationController
   # ヘルスチェックエンドポイント
   # GET /api/health
+
+  before_action :authenticate_user!, only: [:index]
+  before_action :ensure_manager!, only: [:index] # 管理者権限が必要なエンドポイント
+
   def index
     database_status = check_database_connection
 
