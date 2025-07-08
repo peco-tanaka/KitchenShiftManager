@@ -55,7 +55,7 @@ class AdminPolicy < ApplicationPolicy
   end
 
   # Scopeクラス: 権限に基づくデータフィルタリング
-  class Scope < Scope
+  class Scope < ApplicationPolicy::Scope
     def resolve
       if user&.manager?
         scope.all
