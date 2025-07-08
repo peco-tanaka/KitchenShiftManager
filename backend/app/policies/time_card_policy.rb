@@ -34,7 +34,7 @@ class TimeCardPolicy < ApplicationPolicy
   end
 
   # Scopeクラス: 権限に基づくデータフィルタリング
-  class Scope < Scope
+  class Scope < ApplicationPolicy::Scope
     def resolve
       if user&.manager?
         # 管理者は全ての打刻データにアクセス可能
